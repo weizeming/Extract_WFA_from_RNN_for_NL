@@ -10,4 +10,4 @@ Our main contributions are:
 
 ## Quick Start
 
-## Codes
+Run demo_extended.ipynb to show datails for implementation.

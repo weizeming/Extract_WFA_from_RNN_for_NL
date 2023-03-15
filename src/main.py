@@ -72,7 +72,7 @@ if __name__ == '__main__':
         rnn_prediction = torch.argmax(runtime_data[-1])
         rnn_prediction_container.append(rnn_prediction)
 
-    transition_count, kmeans, state_weightes = get_transitions(model, train_dataset, CLUSTER)
+    transition_count, kmeans, state_weightes, all_prediction_container = get_transitions(model, train_dataset, CLUSTER)
     print(f'Transitions ready. Use time:{time.time()-current_time:.1f}')
 
     # generate state distance

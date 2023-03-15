@@ -122,7 +122,7 @@ def get_transitions(model, train_dataset, cluster, augment=False, synonym=0.4, d
             q = abst_state_container[idx][offset+1]
             transition_count[a, p, q] += 1
             
-    return transition_count, kmeans, state_weightes
+    return transition_count, kmeans, state_weightes, all_prediction_container
 
 def add_transitions(model, all_data, matrices, kmeans):
     delta = 0.5
