@@ -6,7 +6,7 @@ This repo is under construction.
 
 
 ## Citation
-<code>
+```
 @inproceedings{wei2022extracting,
     title={Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages},
     author={Wei, Zeming and Zhang, Xiyue and Sun, Meng},
@@ -15,4 +15,4 @@ This repo is under construction.
     year={2022},
     organization={Springer}
 }
-</code>
+```
