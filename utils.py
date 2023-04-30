@@ -5,7 +5,7 @@ import numpy as np
 import random
 import time
 from path import *
-
+from tqdm import tqdm
 
 def dev():  
     if torch.cuda.is_available():
@@ -14,14 +14,13 @@ def dev():
         device_name = 'cpu'
     return torch.device(device_name)
 
-def get_transitions(model, train_dataset, cluster, augment=False, synonym=0.4, dropout=0.2, num_epoch=5):
+def get_transitions(model, train_dataset, cluster, augment=False, synonym=0.4, dropout=0.2, num_epoch=5, argmax=True):
     current_time = time.time()
     runtime_data_container = []  
     ''' 
     List of runtime_data. 
     Each runtime_data is a 2-dim tensor as step-wise RNN output for a sentence.
     '''
-    
     rnn_prediction_container = []
     '''
     List of RNN final prediction for a whole sentence.
@@ -70,11 +69,9 @@ def get_transitions(model, train_dataset, cluster, augment=False, synonym=0.4, d
             runtime_data.append(runtime_prediction.reshape(1, -1))
         runtime_data = torch.concat(runtime_data, dim=0)
         transition_num += len(runtime_data)
-        rnn_prediction = torch.argmax(runtime_data[-1])
+        rnn_prediction = torch.argmax(runtime_data[-1]) if argmax else runtime_data[-1].detach().clone()
         runtime_data_container.append(runtime_data)
         rnn_prediction_container.append(rnn_prediction)
-
-    
     
     # generate abstract states
     current_time = time.time()
@@ -187,7 +184,7 @@ def get_matrices(transition_count, state_distance, completion, regularization, b
     return transition_matrices.to(dev())
     #print(transition_matrices.shape)
 
-def evaluation(dataset, transition_matrices, state_weight, rnn_prediction):
+def evaluation(dataset, transition_matrices, state_weight, rnn_prediction, JS=False):
     assert len(dataset.int_data) == len(rnn_prediction)
     assert transition_matrices.shape[1] == state_weight.shape[0]
     assert len(dataset.vocab) == transition_matrices.shape[0]
@@ -210,12 +207,30 @@ def evaluation(dataset, transition_matrices, state_weight, rnn_prediction):
         #print(state_probs)
         prediction = state_probs @ state_weight
         prediction = prediction.flatten()
-        if prediction.sum() == 0:
-            wfa_prediction = -1
-        else:
-            wfa_prediction =  torch.argmax(prediction).item()
-        if wfa_prediction == rnn_prediction[idx]:
-            consist += 1
-    correct_rate = consist/len(dataset.int_data)
+
+        if not JS:
+            # calculate CR
+            if prediction.sum() == 0:
+                wfa_prediction = -1
+            else:
+                wfa_prediction =  torch.argmax(prediction).item()
+            if wfa_prediction == rnn_prediction[idx]:
+                consist += 1
     
+        else:
+            if prediction.sum() == 0:
+                prediction = torch.ones_like(prediction)
+            wfa_prediction = prediction / prediction.sum()
+            p = wfa_prediction
+            q = rnn_prediction[idx]
+            r = (p+q)/2
+
+            js = 1/2 * (
+                p*(p.log() - r.log()) + q*(q.log()-r.log())
+            )
+            # calculate JS distance
+            consist += js.sum().item()
+    
+    correct_rate = consist / len(dataset.int_data)
+
     return correct_rate

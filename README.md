@@ -4,7 +4,7 @@ Conference Paper:
 
 Authors: [Zeming Wei](https://weizeming.github.io), [Xiyue Zhang](https://zhang-xiyue.github.io/), [Meng Sun](https://www.math.pku.edu.cn/teachers/sunm/indexen.html)
 
-Extended Version as Journal Paper: Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks (__under review__)
+Extended Version as Journal Paper:
 
 Authors: [Zeming Wei](https://weizeming.github.io),
 [Xiyue Zhang](https://zhang-xiyue.github.io/), 

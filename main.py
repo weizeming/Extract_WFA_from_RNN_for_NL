@@ -8,7 +8,7 @@ import time
 import random
 import argparse
 from tqdm import tqdm
-from path import Path, Log_Path
+from path import Path
 from dataset import dataset
 from model import RNN
 
@@ -20,21 +20,22 @@ from synonym import get_synonym
 def get_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', default='news', choices=['toxic', 'news'])
-    parser.add_argument('--cluster', default=20, type=int)
+    parser.add_argument('--cluster', default=40, type=int)
 
 
     # transition matrix complement
     parser.add_argument('--beta', default=0.3, type=float)
     # context regularization
-    parser.add_argument('--alpha', default=0.2, type=float)
+    parser.add_argument('--alpha', default=0.4, type=float)
 
     # configurations for data augmentation
-    parser.add_argument('--augmentation-epochs', default=10, type=int)
+    parser.add_argument('--augmentation-epochs', default=5, type=int)
     parser.add_argument('--replace-rate', default=0.4, type=float)
     parser.add_argument('--dropout', default=0.2, type=float)
 
     parser.add_argument('--ablation', action='store_true')
-
+    parser.add_argument('--JS', action='store_true')
+    
     return parser.parse_args()
 
 if __name__ == '__main__':
@@ -47,11 +48,15 @@ if __name__ == '__main__':
 
     # select the completion and regularization tactics
     if args.ablation:
-        COMPLETION = [weighted_filling, uniform_filling, blank_filling]
+        COMPLETION = [weighted_filling, uniform_filling]
         REGULARIZATION = [linear_regularization, none_regularization]
+        if not args.JS:
+            COMPLETION.append(blank_filling)
     else:
         COMPLETION = [weighted_filling]
         REGULARIZATION = [linear_regularization]
+        #COMPLETION = [blank_filling]
+        #REGULARIZATION = [none_regularization]        
     # select the iteration times of using synonym to augmenting dataset
     NUM_EPOCHS = args.augmentation_epochs
 
@@ -88,7 +93,7 @@ if __name__ == '__main__':
             runtime_prediction = F.softmax(step_data,dim=0)
             runtime_data.append(runtime_prediction.reshape(1, -1))
         runtime_data = torch.concat(runtime_data, dim=0)
-        rnn_prediction = torch.argmax(runtime_data[-1])
+        rnn_prediction = torch.argmax(runtime_data[-1]) if not args.JS else runtime_data[-1]
         rnn_prediction_container.append(rnn_prediction)
 
     transition_count, kmeans, state_weightes, all_prediction_container = get_transitions(model, train_dataset, CLUSTER)
@@ -111,21 +116,15 @@ if __name__ == '__main__':
             current_time = time.time()
 
             transition_matrices = get_matrices(transition_count, state_distance, completion, regularization, BETA, ALPHA)
-            correct_rate = evaluation(test_dataset, transition_matrices, state_weightes, rnn_prediction_container)
+            correct_rate = evaluation(test_dataset, transition_matrices, state_weightes, rnn_prediction_container, args.JS)
             result[i,j] = round(correct_rate*100, 2)
-            print(f'{completion.__name__} & {regularization.__name__} : {round(correct_rate*100, 2)}%, {time.time() - current_time:.0f}s')
-            
+            print(f'{completion.__name__} & {regularization.__name__} : {round(correct_rate, 4)}, {time.time() - current_time:.0f}s')
+
     result = pd.DataFrame(result, columns=regularization_names, index=completion_names)
     print(result)
     print(f'Evaluation done.')
     
     all_synonym = torch.load(Path+DATASET+'_synonym.pth')
-    '''
-    all_synonym is a tensor with size (vocab_num, m),
-    where m is the number of synonym for each word.
-    The [i,j]-th item of all_synonym indicates the j-th synonym of i-th word.
-    If some word doe NOT have synonym, the i-th row will be filled with -1.
-    '''
     current_time = time.time()
     for epoch in range(NUM_EPOCHS):
         current_time = time.time()
@@ -151,10 +150,10 @@ if __name__ == '__main__':
                 for j, regularization in enumerate(REGULARIZATION):
                     current_time = time.time()
 
-                    transition_matrices = get_matrices(transition_count, state_distance, completion, regularization)
-                    correct_rate = evaluation(test_dataset, transition_matrices, state_weightes, rnn_prediction_container)
+                    transition_matrices = get_matrices(transition_count, state_distance, completion, regularization,BETA,ALPHA)
+                    correct_rate = evaluation(test_dataset, transition_matrices, state_weightes, rnn_prediction_container, args.JS)
                     result[i,j] = round(correct_rate*100, 2)  
-                    print(f'{completion.__name__} & {regularization.__name__} : {round(correct_rate*100, 2)}%, {time.time() - current_time:.0f}s')
+                    print(f'{completion.__name__} & {regularization.__name__} : {round(correct_rate, 4)}, {time.time() - current_time:.0f}s')
 
             result = pd.DataFrame(result, columns=regularization_names, index=completion_names)
             print('-'*100)          
