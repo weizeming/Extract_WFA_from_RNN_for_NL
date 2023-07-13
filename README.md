@@ -30,3 +30,14 @@ Authors: [Zeming Wei](https://weizeming.github.io),
     organization={Springer}
 }
 ```
+and/or
+```
+@misc{wei2023weighted,
+      title={Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks}, 
+      author={Zeming Wei and Xiyue Zhang and Yihao Zhang and Meng Sun},
+      year={2023},
+      eprint={2306.14040},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
+```
