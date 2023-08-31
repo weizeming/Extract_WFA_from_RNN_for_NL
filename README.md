@@ -1,5 +1,6 @@
 # Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages
 Conference Paper (ICFEM 2022):
+
 [Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages](https://arxiv.org/pdf/2206.14621.pdf)
 
 Authors: [Zeming Wei](https://weizeming.github.io), [Xiyue Zhang](https://zhang-xiyue.github.io/), [Meng Sun](https://www.math.pku.edu.cn/teachers/sunm/indexen.html)
@@ -7,6 +8,7 @@ Authors: [Zeming Wei](https://weizeming.github.io), [Xiyue Zhang](https://zhang-
 ---
 
 Extended Version as Journal Paper: (Journal of Logical and Algebraic Methods in Programming)
+
 [Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks](https://arxiv.org/pdf/2306.14040.pdf)
 
 Authors: [Zeming Wei](https://weizeming.github.io),
