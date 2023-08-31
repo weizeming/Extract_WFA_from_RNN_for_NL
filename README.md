@@ -1,10 +1,12 @@
 # Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages
-Conference Paper:
+Conference Paper (ICFEM 2022):
 [Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages](https://arxiv.org/pdf/2206.14621.pdf)
 
 Authors: [Zeming Wei](https://weizeming.github.io), [Xiyue Zhang](https://zhang-xiyue.github.io/), [Meng Sun](https://www.math.pku.edu.cn/teachers/sunm/indexen.html)
 
-Extended Version as Journal Paper: (Preprint)
+---
+
+Extended Version as Journal Paper: (Journal of Logical and Algebraic Methods in Programming)
 [Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks](https://arxiv.org/pdf/2306.14040.pdf)
 
 Authors: [Zeming Wei](https://weizeming.github.io),
@@ -12,12 +14,15 @@ Authors: [Zeming Wei](https://weizeming.github.io),
 [Yihao Zhang](https://zhang-yihao.github.io/),
 [Meng Sun](https://www.math.pku.edu.cn/teachers/sunm/indexen.html)
 
+---
+
 
 ## 🔥 News
  - 2022.06 Paper Accepted by [23rd International Conference on Formal Engineering Methods (ICFEM 2022)](http://maude.ucm.es/ICFEM22/index.html).
  - 2022.10 Paper oral presented by Zeming Wei at [ICFEM 2022](http://maude.ucm.es/ICFEM22/index.html), slide available at [here](http://weizeming.com/research/file/ICFEM_2022_Slide.pdf)
  - 2022.12 Paper selected for the ICFEM 2022 special issue in the [Journal of Logical and Algebraic Methods in Programming](https://www.journals.elsevier.com/journal-of-logical-and-algebraic-methods-in-programming)
- - 2023.06 Preprint of extended version is available at [arxiv](https://arxiv.org/pdf/2306.14040.pdf).
+ - 2023.06 Preprint of the extended version is available at [arxiv](https://arxiv.org/pdf/2306.14040.pdf).
+ - 2023.09 Extended paper accepted by [Journal of Logical and Algebraic Methods in Programming](https://www.journals.elsevier.com/journal-of-logical-and-algebraic-methods-in-programming).
 
 
 ## 📍Citation
@@ -32,12 +37,10 @@ Authors: [Zeming Wei](https://weizeming.github.io),
 ```
 and/or
 ```
-@misc{wei2023weighted,
-      title={Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks}, 
-      author={Zeming Wei and Xiyue Zhang and Yihao Zhang and Meng Sun},
-      year={2023},
-      eprint={2306.14040},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{wei2023weighted,
+  title={Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks},
+  author={Wei, Zeming and Zhang, Xiyue and Zhang, Yihao and Sun, Meng},
+  journal={Journal of Logical and Algebraic Methods in Programming},
+  year={2023}
 }
 ```
