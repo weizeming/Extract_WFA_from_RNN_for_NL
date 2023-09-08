@@ -13,7 +13,7 @@ Extended Version as Journal Paper: (Journal of Logical and Algebraic Methods in 
 
 [Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks](https://doi.org/10.1016/j.jlamp.2023.100907)
 
-[arXiv version]((https://arxiv.org/pdf/2306.14040.pdf)
+[arXiv version](https://arxiv.org/pdf/2306.14040.pdf)
 
 Authors: [Zeming Wei](https://weizeming.github.io),
 [Xiyue Zhang](https://zhang-xiyue.github.io/), 
