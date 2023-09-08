@@ -1,7 +1,9 @@
 # Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages
 Conference Paper (ICFEM 2022):
 
-[Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages](https://arxiv.org/pdf/2206.14621.pdf)
+[Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages](https://link.springer.com/chapter/10.1007/978-3-031-17244-1_22)
+
+[arXiv version](https://arxiv.org/pdf/2206.14621.pdf)
 
 Authors: [Zeming Wei](https://weizeming.github.io), [Xiyue Zhang](https://zhang-xiyue.github.io/), [Meng Sun](https://www.math.pku.edu.cn/teachers/sunm/indexen.html)
 
@@ -9,7 +11,9 @@ Authors: [Zeming Wei](https://weizeming.github.io), [Xiyue Zhang](https://zhang-
 
 Extended Version as Journal Paper: (Journal of Logical and Algebraic Methods in Programming)
 
-[Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks](https://arxiv.org/pdf/2306.14040.pdf)
+[Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks](https://doi.org/10.1016/j.jlamp.2023.100907)
+
+[arXiv version]((https://arxiv.org/pdf/2306.14040.pdf)
 
 Authors: [Zeming Wei](https://weizeming.github.io),
 [Xiyue Zhang](https://zhang-xiyue.github.io/), 
@@ -24,7 +28,7 @@ Authors: [Zeming Wei](https://weizeming.github.io),
  - 2022.10 Paper oral presented by Zeming Wei at [ICFEM 2022](http://maude.ucm.es/ICFEM22/index.html), slide available at [here](http://weizeming.com/research/file/ICFEM_2022_Slide.pdf)
  - 2022.12 Paper selected for the ICFEM 2022 special issue in the [Journal of Logical and Algebraic Methods in Programming](https://www.journals.elsevier.com/journal-of-logical-and-algebraic-methods-in-programming)
  - 2023.06 Preprint of the extended version is available at [arxiv](https://arxiv.org/pdf/2306.14040.pdf).
- - 2023.09 Extended paper accepted by [Journal of Logical and Algebraic Methods in Programming](https://www.journals.elsevier.com/journal-of-logical-and-algebraic-methods-in-programming).
+ - 2023.08 Extended paper accepted by [Journal of Logical and Algebraic Methods in Programming](https://www.journals.elsevier.com/journal-of-logical-and-algebraic-methods-in-programming).
 
 
 ## 📍Citation
