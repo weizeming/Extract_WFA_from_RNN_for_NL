@@ -34,19 +34,23 @@ Authors: [Zeming Wei](https://weizeming.github.io),
 ## 📍Citation
 ```
 @inproceedings{wei2022extracting,
-    title={Extracting Weighted Finite Automata from Recurrent Neural Networks for Natural Languages},
-    author={Wei, Zeming and Zhang, Xiyue and Sun, Meng},
-    booktitle={ICFEM},
-    year={2022},
-    organization={Springer}
+  title={Extracting weighted finite automata from recurrent neural networks for natural languages},
+  author={Wei, Zeming and Zhang, Xiyue and Sun, Meng},
+  booktitle={International Conference on Formal Engineering Methods},
+  pages={370--385},
+  year={2022},
+  organization={Springer}
 }
 ```
 and/or
 ```
-@article{wei2023weighted,
-  title={Weighted Automata Extraction and Explanation of Recurrent Neural Networks for Natural Language Tasks},
+@article{wei2024weighted,
+  title={Weighted automata extraction and explanation of recurrent neural networks for natural language tasks},
   author={Wei, Zeming and Zhang, Xiyue and Zhang, Yihao and Sun, Meng},
   journal={Journal of Logical and Algebraic Methods in Programming},
-  year={2023}
+  volume={136},
+  pages={100907},
+  year={2024},
+  publisher={Elsevier}
 }
 ```
